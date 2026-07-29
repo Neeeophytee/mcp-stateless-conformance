@@ -166,8 +166,15 @@ async function probe(srv) {
 // A single endpoint that never settles must not be able to destroy the whole
 // run, so results stream to disk as JSONL and every probe carries a hard
 // watchdog that resolves even if fetch abandons its abort.
-const withDeadline = (p, ms, onTimeout) =>
-  Promise.race([p, new Promise((res) => setTimeout(() => res(onTimeout()), ms).unref?.())]);
+// The watchdog timer must NOT be unref'd: an unref'd timer cannot hold the event
+// loop open, so Node exits with code 13 (unfinished top-level await) before the
+// deadline ever fires — which is exactly how the first full CI run died at
+// 1471/1472. Clear it on the winning path so a finished probe exits promptly.
+const withDeadline = (p, ms, onTimeout) => {
+  let timer;
+  const deadline = new Promise((res) => { timer = setTimeout(() => res(onTimeout()), ms); });
+  return Promise.race([p, deadline]).finally(() => clearTimeout(timer));
+};
 
 const servers = JSON.parse(readFileSync(process.argv[2], "utf8"));
 const out = createWriteStream(process.argv[3] || "results.jsonl", { flags: "a" });
