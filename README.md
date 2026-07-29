@@ -2,8 +2,8 @@
 
 [![conformance](https://github.com/Neeeophytee/mcp-stateless-conformance/actions/workflows/conformance.yml/badge.svg)](https://github.com/Neeeophytee/mcp-stateless-conformance/actions/workflows/conformance.yml)
 [![spec](https://img.shields.io/badge/MCP%20spec-2026--07--28-6E56CF)](https://modelcontextprotocol.io/specification/2026-07-28/changelog)
-[![conformant](https://img.shields.io/badge/conformant-2%20of%20749%20probed-2EA043)](#-fully-conformant-2)
-[![corpus](https://img.shields.io/badge/corpus-1471%20servers-0969DA)](servers.json)
+[![conformant](https://img.shields.io/badge/conformant-2%20of%20752%20probed-2EA043)](#-fully-conformant-2)
+[![corpus](https://img.shields.io/badge/corpus-1472%20servers-0969DA)](servers.json)
 [![PRs welcome](https://img.shields.io/badge/PRs-add%20your%20server-8250DF)](CONTRIBUTING.md)
 [![r/webafterai](https://img.shields.io/badge/reddit-r%2Fwebafterai-FF4500?logo=reddit&logoColor=white)](https://reddit.com/r/webafterai)
 [![newsletter](https://img.shields.io/badge/newsletter-subscribe-FF6719?logo=substack&logoColor=white)](https://webafterai.substack.com/)
@@ -18,7 +18,7 @@ No self-reported badges, no vendor claims. Re-run it yourself:
 node conformance.mjs servers.json results.jsonl
 ```
 
-**Probed:** 2026-07-29T15:41:43.453Z · **Corpus:** 1471 remote servers from the official MCP registry
+**Probed:** 2026-07-29T16:25:34.976Z · **Corpus:** 1472 remote servers from the official MCP registry
 
 ## Scoreboard
 
@@ -26,12 +26,12 @@ node conformance.mjs servers.json results.jsonl
 | --- | ---: | ---: |
 | ✅ Fully conformant | **2** | 0.1% |
 | 🟡 Implements `server/discover`, fails ≥1 MUST | 22 | 1.5% |
-| 🟠 Answers cold requests, no 2026 surface | 206 | 14.0% |
+| 🟠 Answers cold requests, no 2026 surface | 209 | 14.2% |
 | 🔴 Legacy stateful | 519 | 35.3% |
 | 🔒 Auth-gated (not probeable) | 556 | 37.8% |
-| ⚫ Unreachable | 166 | 11.3% |
+| ⚫ Unreachable | 164 | 11.1% |
 
-Of **749** servers that answered an unauthenticated request,
+Of **752** servers that answered an unauthenticated request,
 **2** (0.3%) fully conform.
 
 > **Read the server count with care.** Adoption is concentrated: the
@@ -100,13 +100,13 @@ Of **749** servers that answered an unauthenticated request,
 
 | Rule | Servers failing |
 | --- | ---: |
-| MUST return -32022 UnsupportedProtocolVersion (minor-12) | 746 |
-| MUST return -32020 HeaderMismatch (minor-4/12) | 746 |
-| MUST server/discover (major-3) | 725 |
+| MUST return -32022 UnsupportedProtocolVersion (minor-12) | 749 |
+| MUST return -32020 HeaderMismatch (minor-4/12) | 749 |
+| MUST server/discover (major-3) | 728 |
 | MUST answer cold tools/list without handshake (major-2) | 519 |
-| SHOULD echo serverInfo in result _meta (major-2) | 228 |
-| MUST set resultType (major-8) | 227 |
-| MUST return ttlMs + cacheScope on tools/list (minor-5) | 227 |
+| SHOULD echo serverInfo in result _meta (major-2) | 231 |
+| MUST set resultType (major-8) | 230 |
+| MUST return ttlMs + cacheScope on tools/list (minor-5) | 230 |
 | MUST NOT issue Mcp-Session-Id (major-1) | 35 |
 | SHOULD return deterministic tool order (minor-3) | 1 |
 
@@ -124,7 +124,7 @@ Shipped 2026-07-28 support? Get it on the board — it takes one line.
 **No gatekeeping and no vibes** — the probe decides, and it runs the same nine checks on
 your server as on everyone else's. If it fails, the PR tells you exactly which rule and where
 in the spec it lives, so you can fix it and push again. Failing the first time is normal;
-746 servers currently miss "return -32022 UnsupportedProtocolVersion (minor-12)".
+749 servers currently miss "return -32022 UnsupportedProtocolVersion (minor-12)".
 
 Auth-gated servers are welcome too. They're recorded as **unverified**, never as passing —
 if you want a green row, expose an unauthenticated `server/discover`, which the spec
