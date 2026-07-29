@@ -1,0 +1,54 @@
+name: conformance
+
+# The table is only worth trusting if it is regenerated on a schedule rather
+# than hand-edited. Weekly re-probe + commit keeps every verdict current.
+on:
+  schedule:
+    - cron: "0 6 * * 1"
+  pull_request:
+    paths: ["servers.json", "conformance.mjs"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # changed-servers.mjs diffs against the base branch
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      # On a PR, probe only the endpoints the PR touched so a contributor adding
+      # one server gets a verdict in seconds instead of a full 60-minute sweep.
+      - name: Probe changed endpoints
+        if: github.event_name == 'pull_request'
+        run: |
+          set -euo pipefail
+          node scripts/changed-servers.mjs > /tmp/subset.json
+          CONC=20 node conformance.mjs /tmp/subset.json /tmp/subset.jsonl
+          node scripts/summarize.mjs /tmp/subset.jsonl >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Probe full corpus
+        if: github.event_name != 'pull_request'
+        run: |
+          set -euo pipefail
+          rm -f results.jsonl
+          CONC=30 node conformance.mjs servers.json results.jsonl
+          node scripts/collect.mjs results.jsonl > results.json
+          node gen-report.mjs results.json > README.md
+
+      - name: Commit refreshed results
+        if: github.event_name != 'pull_request'
+        run: |
+          set -euo pipefail
+          git config user.name "conformance-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add results.json README.md
+          git diff --staged --quiet || git commit -m "ci: re-probe conformance $(date -u +%F)"
+          git push
