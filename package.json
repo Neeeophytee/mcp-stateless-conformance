@@ -1,0 +1,9 @@
+{
+ "name": "mcp-stateless-conformance",
+ "private": true,
+ "type": "module",
+ "scripts": {
+  "probe": "node conformance.mjs servers.json > results.json",
+  "report": "node gen-report.mjs results.json > README.md"
+ }
+}
