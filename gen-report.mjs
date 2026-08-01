@@ -12,8 +12,12 @@ const partial = by("partial-2026");
 const statelessIsh = by("stateless-ish-legacy");
 const legacy = by("legacy-stateful");
 const auth = by("auth-required");
+const deprecated = by("transport-deprecated");
 const unreachable = by("unreachable").concat(by("error"));
-const probed = R.length - auth.length - unreachable.length;
+// Only servers we actually measured over Streamable HTTP count as probed.
+const probed = R.length - auth.length - unreachable.length - deprecated.length;
+
+const operators = (list) => new Set(list.map((r) => r.name.split("/")[0])).size;
 
 const rows = (list) =>
   list
@@ -57,22 +61,6 @@ console.log(`# MCP 2026-07-28 Stateless Conformance
 [![r/webafterai](${badge("reddit", "r/webafterai", "FF4500", "?logo=reddit&logoColor=white")})](https://reddit.com/r/webafterai)
 [![newsletter](${badge("newsletter", "subscribe", "FF6719", "?logo=substack&logoColor=white")})](https://webafterai.substack.com/)
 
-> ## ⚠️ These results are not valid — do not cite them
->
-> The corpus below is **not** the MCP registry. It is an alphabetical prefix of it,
-> running from \`ac.inference.sh\` to \`com.boostedchat\` and stopping there, because the
-> script that built it capped pagination at 40 pages while the registry paginates in
-> name order.
->
-> It contains **zero \`io.github.*\` servers**, which are a large share of the remote
-> servers in the registry. Every count, percentage, and "most-failed rule" ranking on
-> this page is therefore measured against a biased sample, not the ecosystem.
->
-> A corrected full-registry scan is in progress. Until it lands, treat the numbers here
-> as void. The per-server verdicts for endpoints that *were* probed remain individually
-> accurate — the checks themselves were not the problem — but no aggregate on this page
-> should be quoted.
-
 Machine-checked conformance of public MCP servers against the
 [2026-07-28 specification](https://modelcontextprotocol.io/specification/2026-07-28/changelog).
 
@@ -94,16 +82,16 @@ node conformance.mjs servers.json results.jsonl
 | 🟠 Answers cold requests, no 2026 surface | ${statelessIsh.length} | ${pct(statelessIsh.length)}% |
 | 🔴 Legacy stateful | ${legacy.length} | ${pct(legacy.length)}% |
 | 🔒 Auth-gated (not probeable) | ${auth.length} | ${pct(auth.length)}% |
+| 🔌 Deprecated HTTP+SSE transport (not probed) | ${deprecated.length} | ${pct(deprecated.length)}% |
 | ⚫ Unreachable | ${unreachable.length} | ${pct(unreachable.length)}% |
 
 Of **${probed}** servers that answered an unauthenticated request,
 **${conformant.length}** (${probed ? ((conformant.length / probed) * 100).toFixed(1) : 0}%) fully conform.
 
-> **Read the server count with care.** Adoption is concentrated: the
-> ${conformant.length + partial.length} servers with any 2026 surface come from just
-> **${new Set([...conformant, ...partial].map((r) => r.name.split("/")[0])).size} operators**, because
-> one vendor may deploy the same codebase to many endpoints. Operator count is the
-> honest adoption signal; server count overstates it.
+> **Read the server count with care.** The ${conformant.length + partial.length} servers with any
+> 2026 surface come from **${operators([...conformant, ...partial])} operators**, and the
+> ${conformant.length} conformant ones from **${operators(conformant)} operators** — one vendor may deploy the
+> same codebase to many endpoints. Operator count is the honest adoption signal.
 
 ### By operator
 
@@ -175,6 +163,34 @@ if you want a green row, expose an unauthenticated \`server/discover\`, which th
 requires anyway.
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for the full checklist and how to dispute a verdict.
+
+## Corrections
+
+**2026-08-01 — the first published results were wrong and have been retracted.**
+
+The initial corpus was not the registry. It was an alphabetical prefix of it, running
+\`ac.inference.sh\` → \`com.boostedchat\`, because the fetch script capped pagination at 40
+pages while the registry paginates in name order. It covered 1,472 of 9,794 remote servers
+(15%) and contained **zero \`io.github.*\` servers** — a namespace that is 5,006 servers, or
+51% of all remote servers in the registry. Reported by a reader on r/mcp.
+
+Published as "2 of 752 conformant". Actually ${conformant.length} of ${probed}. The retracted
+figure was wrong in both directions that matter: it undercounted conformant servers ~30x,
+and its claim that adoption came from "just 5 operators" was an artifact of the biased
+sample — the real figure is ${operators([...conformant, ...partial])} operators.
+
+Two further bugs found in the same review:
+
+- The failure ranking charged 2025-era servers with failing 2026 MUSTs. A server that never
+  adopted the spec cannot "fail to return \`-32022\`"; 728 of 749 counted failures were
+  non-adopters. The ranking is now computed only over servers that claim 2026.
+- Servers declaring the deprecated HTTP+SSE transport were probed with Streamable HTTP POST
+  and labelled legacy-stateful. That measures the wrong protocol; they now have their own
+  bucket and are excluded from the probed denominator.
+
+Fixes: \`scripts/fetch-registry.mjs\` has no page cap and checkpoints its cursor, so the
+truncation cannot recur silently and a network failure resumes rather than discarding the
+run. The nine checks themselves were never implicated.
 
 ---
 
