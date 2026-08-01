@@ -10,10 +10,11 @@ const rows = readFileSync(process.argv[2], "utf8")
   .filter(Boolean)
   .map((l) => JSON.parse(l));
 
-// A re-probe appends, so the same endpoint can appear more than once. Keep the
-// last verdict for each, which is the most recent measurement.
+// A re-probe appends, so the same server can appear more than once. Key on name
+// alone, not name+url: a server's endpoint can change between runs, and keying on
+// the pair would keep both the stale and the fresh verdict as separate rows.
 const latest = new Map();
-for (const r of rows) latest.set(`${r.name}|${r.url}`, r);
+for (const r of rows) latest.set(r.name, r);
 
 console.log(
   JSON.stringify(

@@ -16,10 +16,11 @@ Add one entry to `servers.json`:
 }
 ```
 
-- `name` — reverse-DNS, matching the official registry convention. The part before `/` is
+- `name`: reverse-DNS, matching the official registry convention. The part before `/` is
   treated as your **operator id**, and the report groups by it (see below).
-- `url` — the exact Streamable HTTP POST endpoint.
-- `type` — `streamable-http`, or `sse` if you're still on the deprecated transport.
+- `url`: the exact Streamable HTTP POST endpoint.
+- `type`: `streamable-http`, or `sse` if you are still on the deprecated transport. If you
+  offer both, use `streamable-http`; that is the one the probe measures.
 
 Open a PR. CI probes only the endpoints your PR touched and posts a verdict table on the
 PR, usually within a minute. No maintainer judgement is involved.
@@ -46,15 +47,14 @@ SHOULD failures are reported but don't block a green verdict.
 ## Why operator grouping exists
 
 One vendor deploying the same codebase to twenty subdomains is one implementation, not
-twenty. The report leads with operator counts because server counts overstate adoption —
-at last count, 24 "2026-aware" servers came from 5 operators. Please don't submit twenty
-near-identical endpoints; submit the ones that are genuinely distinct deployments.
+twenty, so the report gives operator counts alongside server counts. Please do not submit
+twenty near-identical endpoints; submit the ones that are genuinely distinct deployments.
 
 ## Auth-gated servers
 
-Submit them. They're recorded as **unverified**, never as passing, because the probe can't
-authenticate. If you want a verifiable row, expose an unauthenticated `server/discover` —
-the spec requires servers to implement it for exactly this reason, so clients can negotiate
+Submit them. They are recorded as **unverified**, never as passing, because the probe cannot
+authenticate. If you want a verifiable row, expose an unauthenticated `server/discover`.
+The spec requires servers to implement it for exactly this reason, so clients can negotiate
 before authenticating.
 
 ## Disputing a verdict
@@ -65,9 +65,9 @@ Verdicts are measurements, not opinions, and measurements can be wrong. Open an 
 2. A `curl` showing your server's actual response.
 3. The spec line you're reading differently.
 
-If the probe is wrong, that's a bug in `conformance.mjs` and it gets fixed — the probe has
-been wrong before. The first version of it tested the *previous* protocol entirely, sending
-`initialize` and omitting the required per-request `_meta` envelope; a server operator's
+If the probe is wrong, that is a bug in `conformance.mjs` and it gets fixed. The probe has
+been wrong before: the first version tested the *previous* protocol entirely, sending
+`initialize` and omitting the required per-request `_meta` envelope. A server operator's
 precise error message is what caught it.
 
 ## Running it yourself
@@ -78,5 +78,5 @@ node scripts/collect.mjs results.jsonl > results.json
 node gen-report.mjs results.json > README.md
 ```
 
-Never edit `README.md` by hand — CI regenerates it from `results.json` on every run.
+Never edit `README.md` by hand. CI regenerates it from `results.json` on every run.
 Report changes go in `gen-report.mjs`.

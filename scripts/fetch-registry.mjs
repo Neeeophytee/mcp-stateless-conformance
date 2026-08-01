@@ -51,3 +51,29 @@ while (true) {
 }
 
 process.stderr.write(`COMPLETE: ${pages} pages, ${records} records this session\n`);
+
+// Build servers.json from the raw pull. This lives here rather than in an ad-hoc
+// one-liner because the transport-selection rule below is easy to get wrong and
+// needs to be reviewable.
+const byName = new Map();
+for (const line of readFileSync(RAW, "utf8").trim().split("\n")) {
+  let s;
+  try { s = JSON.parse(line); } catch { continue; }
+  const srv = s.server || s;
+  if (!srv.name) continue;
+  const rems = (srv.remotes || []).filter((r) => r.type === "streamable-http" || r.type === "sse");
+  if (!rems.length) continue;
+  // Prefer Streamable HTTP wherever a server offers it. 651 servers declare both
+  // transports; taking remotes[0] blindly mislabelled those listing sse first as
+  // deprecated-transport-only, which wrongly excluded 19 servers from probing.
+  const pick = rems.find((r) => r.type === "streamable-http") || rems[0];
+  // Records arrive in ascending version order, so the last write per name is the
+  // newest version.
+  byName.set(srv.name, { name: srv.name, url: pick.url, type: pick.type });
+}
+const list = [...byName.values()].sort((a, b) => a.name.localeCompare(b.name));
+writeFileSync("servers.json", JSON.stringify(list, null, 1));
+process.stderr.write(
+  `servers.json: ${list.length} servers ` +
+  `(${list.filter((s) => s.type === "sse").length} sse-only)\n`
+);

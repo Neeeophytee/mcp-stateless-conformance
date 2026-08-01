@@ -186,7 +186,7 @@ async function probe(srv) {
 // watchdog that resolves even if fetch abandons its abort.
 // The watchdog timer must NOT be unref'd: an unref'd timer cannot hold the event
 // loop open, so Node exits with code 13 (unfinished top-level await) before the
-// deadline ever fires — which is exactly how the first full CI run died at
+// deadline ever fires, which is exactly how the first full CI run died at
 // 1471/1472. Clear it on the winning path so a finished probe exits promptly.
 const withDeadline = (p, ms, onTimeout) => {
   let timer;

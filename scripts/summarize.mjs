@@ -9,7 +9,7 @@ const rows = readFileSync(process.argv[2], "utf8")
   .map((l) => JSON.parse(l));
 
 if (!rows.length) {
-  console.log("No endpoints changed in this PR — nothing to probe.");
+  console.log("No endpoints changed in this PR, so there is nothing to probe.");
   process.exit(0);
 }
 
@@ -27,7 +27,7 @@ console.log("## Conformance probe\n");
 console.log("| Server | Verdict | Failing rules |");
 console.log("| --- | --- | --- |");
 for (const r of rows) {
-  const fails = (r.failures || []).length ? r.failures.join("<br>") : "—";
+  const fails = (r.failures || []).length ? r.failures.join("<br>") : "none";
   console.log(`| \`${r.name}\` | ${ICON[r.verdict] || ""} ${r.verdict} | ${fails} |`);
 }
 

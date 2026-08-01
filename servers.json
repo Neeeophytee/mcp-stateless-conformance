@@ -4251,8 +4251,8 @@
  },
  {
   "name": "app.linear/linear",
-  "url": "https://mcp.linear.app/sse",
-  "type": "sse"
+  "url": "https://mcp.linear.app/mcp",
+  "type": "streamable-http"
  },
  {
   "name": "app.listentosadhu/corpus",
@@ -6121,8 +6121,8 @@
  },
  {
   "name": "co.axiom/mcp",
-  "url": "https://mcp.axiom.co/sse",
-  "type": "sse"
+  "url": "https://mcp.axiom.co/mcp",
+  "type": "streamable-http"
  },
  {
   "name": "co.bizverify/mcp",
@@ -9492,7 +9492,7 @@
  {
   "name": "com.epidemicsound/mcp-server",
   "url": "https://www.epidemicsound.com/a/mcp-server/mcp",
-  "type": "sse"
+  "type": "streamable-http"
  },
  {
   "name": "com.epovest/ai-visibility",
@@ -12946,8 +12946,8 @@
  },
  {
   "name": "com.pearl.mcp/pearl-api-mcp-server",
-  "url": "https://mcp.pearl.com/sse",
-  "type": "sse"
+  "url": "https://mcp.pearl.com/mcp",
+  "type": "streamable-http"
  },
  {
   "name": "com.peek/mcp",
@@ -14892,7 +14892,7 @@
  {
   "name": "com.teamwork/mcp",
   "url": "https://mcp.ai.teamwork.com",
-  "type": "sse"
+  "type": "streamable-http"
  },
  {
   "name": "com.teclazo/mercadolibre",
@@ -16226,8 +16226,8 @@
  },
  {
   "name": "com.wix/mcp",
-  "url": "https://mcp.wix.com/sse",
-  "type": "sse"
+  "url": "https://mcp.wix.com/mcp",
+  "type": "streamable-http"
  },
  {
   "name": "com.wizerapi/contract-intelligence",
@@ -22276,8 +22276,8 @@
  },
  {
   "name": "io.github.connerlambden/bgpt-mcp",
-  "url": "https://bgpt.pro/mcp/sse",
-  "type": "sse"
+  "url": "https://bgpt.pro/mcp/stream",
+  "type": "streamable-http"
  },
  {
   "name": "io.github.connerlambden/helium-mcp",
@@ -23736,8 +23736,8 @@
  },
  {
   "name": "io.github.dreamingms/kael-mcp-server",
-  "url": "https://www.kael.ink/mcp/sse",
-  "type": "sse"
+  "url": "https://www.kael.ink/mcp/stream",
+  "type": "streamable-http"
  },
  {
   "name": "io.github.drjoergkrauter/leadership-agent",
@@ -25156,8 +25156,8 @@
  },
  {
   "name": "io.github.frogeye-ai/mcp",
-  "url": "https://mcp.frogeye.ai/sse",
-  "type": "sse"
+  "url": "https://mcp.frogeye.ai/mcp",
+  "type": "streamable-http"
  },
  {
   "name": "io.github.frontsail-ai/aspicio",
@@ -28166,8 +28166,8 @@
  },
  {
   "name": "io.github.krishtoautomate/robotactions",
-  "url": "https://{tenant}.robotactions.com/mcp/sse",
-  "type": "sse"
+  "url": "https://{tenant}.robotactions.com/mcp",
+  "type": "streamable-http"
  },
  {
   "name": "io.github.kristof-sudo/agentcrush-app",
@@ -29201,8 +29201,8 @@
  },
  {
   "name": "io.github.manavaga/web3-signals",
-  "url": "https://web3-signals-api-production.up.railway.app/mcp/sse",
-  "type": "sse"
+  "url": "https://web3-signals-api-production.up.railway.app/mcp/stream",
+  "type": "streamable-http"
  },
  {
   "name": "io.github.manganate006/openlmnp",
@@ -31551,8 +31551,8 @@
  },
  {
   "name": "io.github.ONLYOFFICE/docspace",
-  "url": "https://mcp.onlyoffice.com/sse",
-  "type": "sse"
+  "url": "https://mcp.onlyoffice.com/mcp",
+  "type": "streamable-http"
  },
  {
   "name": "io.github.Onplana/mcp-server",
@@ -40121,8 +40121,8 @@
  },
  {
   "name": "io.github.Severin2k/blumen-komander-mcp",
-  "url": "https://mcp.blumen-verschicken.online/sse",
-  "type": "sse"
+  "url": "https://mcp.blumen-verschicken.online/mcp",
+  "type": "streamable-http"
  },
  {
   "name": "io.github.SezerPro/fichepro-mcp",
@@ -42836,8 +42836,8 @@
  },
  {
   "name": "io.github.viaonboard/onboard",
-  "url": "https://rest.onboard.io/mcp/sse",
-  "type": "sse"
+  "url": "https://rest.onboard.io/mcp/rpc",
+  "type": "streamable-http"
  },
  {
   "name": "io.github.VibeKit-Bot/vibekit-mcp",
@@ -43041,8 +43041,8 @@
  },
  {
   "name": "io.github.waddou/mcp-noticiel",
-  "url": "https://noticiel-mcp.wadie.workers.dev/sse",
-  "type": "sse"
+  "url": "https://noticiel-mcp.wadie.workers.dev/mcp",
+  "type": "streamable-http"
  },
  {
   "name": "io.github.walkojas-boop/ghostdom",
@@ -43991,8 +43991,8 @@
  },
  {
   "name": "io.globalping/mcp",
-  "url": "https://mcp.globalping.io/sse",
-  "type": "sse"
+  "url": "https://mcp.globalping.io/mcp",
+  "type": "streamable-http"
  },
  {
   "name": "io.govparse/gateway",
@@ -44411,8 +44411,8 @@
  },
  {
   "name": "io.prisma/mcp",
-  "url": "https://mcp.prisma.io/sse",
-  "type": "sse"
+  "url": "https://mcp.prisma.io/mcp",
+  "type": "streamable-http"
  },
  {
   "name": "io.productsource/product-source",
@@ -46592,7 +46592,7 @@
  {
   "name": "net.singular/mcp-server",
   "url": "https://mcp.singular.net/mcp-server/mcp",
-  "type": "sse"
+  "type": "streamable-http"
  },
  {
   "name": "net.smartapis/products-watch",
@@ -47311,8 +47311,8 @@
  },
  {
   "name": "org.toolapi/hub",
-  "url": "https://toolapi.org/sse",
-  "type": "sse"
+  "url": "https://toolapi.org/mcp",
+  "type": "streamable-http"
  },
  {
   "name": "org.totto/javabin-archieve",

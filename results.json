@@ -1,6 +1,6 @@
 {
  "spec": "2026-07-28",
- "probedAt": "2026-08-01T03:37:25.490Z",
+ "probedAt": "2026-08-01T03:51:12.031Z",
  "results": [
   {
    "name": "ai.agentrapay/agentra",
@@ -15018,12 +15018,14 @@
   },
   {
    "name": "app.linear/linear",
-   "url": "https://mcp.linear.app/sse",
-   "transport": "sse",
-   "checks": {},
+   "url": "https://mcp.linear.app/mcp",
+   "transport": "streamable-http",
+   "checks": {
+    "oauthChallenge": true
+   },
    "failures": [],
-   "verdict": "transport-deprecated",
-   "detail": "declares deprecated HTTP+SSE transport; not probed as Streamable HTTP"
+   "verdict": "auth-required",
+   "detail": "HTTP 401"
   },
   {
    "name": "app.indicia/mcp",
@@ -20763,12 +20765,14 @@
   },
   {
    "name": "co.axiom/mcp",
-   "url": "https://mcp.axiom.co/sse",
-   "transport": "sse",
-   "checks": {},
+   "url": "https://mcp.axiom.co/mcp",
+   "transport": "streamable-http",
+   "checks": {
+    "oauthChallenge": true
+   },
    "failures": [],
-   "verdict": "transport-deprecated",
-   "detail": "declares deprecated HTTP+SSE transport; not probed as Streamable HTTP"
+   "verdict": "auth-required",
+   "detail": "HTTP 401"
   },
   {
    "name": "build.naru/contract-compass",
@@ -34575,11 +34579,25 @@
   {
    "name": "com.epidemicsound/mcp-server",
    "url": "https://www.epidemicsound.com/a/mcp-server/mcp",
-   "transport": "sse",
-   "checks": {},
-   "failures": [],
-   "verdict": "transport-deprecated",
-   "detail": "declares deprecated HTTP+SSE transport; not probed as Streamable HTTP"
+   "transport": "streamable-http",
+   "checks": {
+    "serverDiscover": false,
+    "coldToolsList": false,
+    "coldStatus": 404,
+    "issuesSessionId": false,
+    "badVersionCode": null,
+    "headerMismatchCode": null,
+    "legacyInitializeAnswered": false,
+    "legacyNegotiatedVersion": null
+   },
+   "failures": [
+    "MUST server/discover (major-3)",
+    "MUST answer cold tools/list without handshake (major-2)",
+    "MUST return -32022 UnsupportedProtocolVersion (minor-12)",
+    "MUST return -32020 HeaderMismatch (minor-4/12)"
+   ],
+   "verdict": "legacy-stateful",
+   "claims2026": false
   },
   {
    "name": "com.dropwatchhq/price-check",
@@ -47764,12 +47782,26 @@
   },
   {
    "name": "com.pearl.mcp/pearl-api-mcp-server",
-   "url": "https://mcp.pearl.com/sse",
-   "transport": "sse",
-   "checks": {},
-   "failures": [],
-   "verdict": "transport-deprecated",
-   "detail": "declares deprecated HTTP+SSE transport; not probed as Streamable HTTP"
+   "url": "https://mcp.pearl.com/mcp",
+   "transport": "streamable-http",
+   "checks": {
+    "serverDiscover": false,
+    "coldToolsList": false,
+    "coldStatus": 400,
+    "issuesSessionId": false,
+    "badVersionCode": -32000,
+    "headerMismatchCode": -32000,
+    "legacyInitializeAnswered": true,
+    "legacyNegotiatedVersion": "2025-11-25"
+   },
+   "failures": [
+    "MUST server/discover (major-3)",
+    "MUST answer cold tools/list without handshake (major-2)",
+    "MUST return -32022 UnsupportedProtocolVersion (minor-12)",
+    "MUST return -32020 HeaderMismatch (minor-4/12)"
+   ],
+   "verdict": "legacy-stateful",
+   "claims2026": false
   },
   {
    "name": "com.openhousecopilot/openhouse-copilot",
@@ -55141,11 +55173,31 @@
   {
    "name": "com.teamwork/mcp",
    "url": "https://mcp.ai.teamwork.com",
-   "transport": "sse",
-   "checks": {},
-   "failures": [],
-   "verdict": "transport-deprecated",
-   "detail": "declares deprecated HTTP+SSE transport; not probed as Streamable HTTP"
+   "transport": "streamable-http",
+   "checks": {
+    "serverDiscover": true,
+    "advertisedVersions": null,
+    "serverName": null,
+    "coldToolsList": true,
+    "coldStatus": 200,
+    "issuesSessionId": false,
+    "resultType": "complete",
+    "ttlMs": 0,
+    "cacheScope": "private",
+    "serverInfoInMeta": true,
+    "badVersionCode": null,
+    "headerMismatchCode": -32020,
+    "independentRequests": true,
+    "deterministicOrder": true,
+    "legacyInitializeAnswered": true,
+    "legacyNegotiatedVersion": "2025-11-25"
+   },
+   "failures": [
+    "MUST return -32022 UnsupportedProtocolVersion (minor-12)"
+   ],
+   "toolCount": 190,
+   "verdict": "partial-2026",
+   "claims2026": true
   },
   {
    "name": "com.supersaas/mcp",
@@ -59656,12 +59708,14 @@
   },
   {
    "name": "com.wix/mcp",
-   "url": "https://mcp.wix.com/sse",
-   "transport": "sse",
-   "checks": {},
+   "url": "https://mcp.wix.com/mcp",
+   "transport": "streamable-http",
+   "checks": {
+    "oauthChallenge": true
+   },
    "failures": [],
-   "verdict": "transport-deprecated",
-   "detail": "declares deprecated HTTP+SSE transport; not probed as Streamable HTTP"
+   "verdict": "auth-required",
+   "detail": "HTTP 401"
   },
   {
    "name": "com.trustboundarysystems/bookings",
@@ -81886,12 +81940,27 @@
   },
   {
    "name": "io.github.connerlambden/bgpt-mcp",
-   "url": "https://bgpt.pro/mcp/sse",
-   "transport": "sse",
-   "checks": {},
-   "failures": [],
-   "verdict": "transport-deprecated",
-   "detail": "declares deprecated HTTP+SSE transport; not probed as Streamable HTTP"
+   "url": "https://bgpt.pro/mcp/stream",
+   "transport": "streamable-http",
+   "checks": {
+    "serverDiscover": false,
+    "coldToolsList": false,
+    "coldStatus": 400,
+    "issuesSessionId": true,
+    "badVersionCode": -32600,
+    "headerMismatchCode": -32600,
+    "legacyInitializeAnswered": true,
+    "legacyNegotiatedVersion": "2025-11-25"
+   },
+   "failures": [
+    "MUST server/discover (major-3)",
+    "MUST answer cold tools/list without handshake (major-2)",
+    "MUST NOT issue Mcp-Session-Id (major-1)",
+    "MUST return -32022 UnsupportedProtocolVersion (minor-12)",
+    "MUST return -32020 HeaderMismatch (minor-4/12)"
+   ],
+   "verdict": "legacy-stateful",
+   "claims2026": false
   },
   {
    "name": "io.github.coinrule-com/coinrule-mcp",
@@ -87633,12 +87702,14 @@
   },
   {
    "name": "io.github.dreamingms/kael-mcp-server",
-   "url": "https://www.kael.ink/mcp/sse",
-   "transport": "sse",
-   "checks": {},
+   "url": "https://www.kael.ink/mcp/stream",
+   "transport": "streamable-http",
+   "checks": {
+    "oauthChallenge": false
+   },
    "failures": [],
-   "verdict": "transport-deprecated",
-   "detail": "declares deprecated HTTP+SSE transport; not probed as Streamable HTTP"
+   "verdict": "auth-required",
+   "detail": "HTTP 401"
   },
   {
    "name": "io.github.disclose/lookup-disclose-io",
@@ -92235,12 +92306,35 @@
   },
   {
    "name": "io.github.frogeye-ai/mcp",
-   "url": "https://mcp.frogeye.ai/sse",
-   "transport": "sse",
-   "checks": {},
-   "failures": [],
-   "verdict": "transport-deprecated",
-   "detail": "declares deprecated HTTP+SSE transport; not probed as Streamable HTTP"
+   "url": "https://mcp.frogeye.ai/mcp",
+   "transport": "streamable-http",
+   "checks": {
+    "serverDiscover": false,
+    "coldToolsList": true,
+    "coldStatus": 200,
+    "issuesSessionId": false,
+    "resultType": null,
+    "ttlMs": null,
+    "cacheScope": null,
+    "serverInfoInMeta": false,
+    "badVersionCode": null,
+    "headerMismatchCode": null,
+    "independentRequests": true,
+    "deterministicOrder": true,
+    "legacyInitializeAnswered": true,
+    "legacyNegotiatedVersion": "2025-03-26"
+   },
+   "failures": [
+    "MUST server/discover (major-3)",
+    "MUST set resultType (major-8)",
+    "MUST return ttlMs + cacheScope on tools/list (minor-5)",
+    "SHOULD echo serverInfo in result _meta (major-2)",
+    "MUST return -32022 UnsupportedProtocolVersion (minor-12)",
+    "MUST return -32020 HeaderMismatch (minor-4/12)"
+   ],
+   "toolCount": 7,
+   "verdict": "stateless-ish-legacy",
+   "claims2026": false
   },
   {
    "name": "io.github.evanfollis/preflight",
@@ -103958,12 +104052,12 @@
   },
   {
    "name": "io.github.krishtoautomate/robotactions",
-   "url": "https://{tenant}.robotactions.com/mcp/sse",
-   "transport": "sse",
+   "url": "https://{tenant}.robotactions.com/mcp",
+   "transport": "streamable-http",
    "checks": {},
    "failures": [],
-   "verdict": "transport-deprecated",
-   "detail": "declares deprecated HTTP+SSE transport; not probed as Streamable HTTP"
+   "verdict": "unreachable",
+   "detail": "fetch failed"
   },
   {
    "name": "io.github.ketherworks/atcoder",
@@ -108764,12 +108858,27 @@
   },
   {
    "name": "io.github.manavaga/web3-signals",
-   "url": "https://web3-signals-api-production.up.railway.app/mcp/sse",
-   "transport": "sse",
-   "checks": {},
-   "failures": [],
-   "verdict": "transport-deprecated",
-   "detail": "declares deprecated HTTP+SSE transport; not probed as Streamable HTTP"
+   "url": "https://web3-signals-api-production.up.railway.app/mcp/stream",
+   "transport": "streamable-http",
+   "checks": {
+    "serverDiscover": false,
+    "coldToolsList": false,
+    "coldStatus": 400,
+    "issuesSessionId": true,
+    "badVersionCode": -32600,
+    "headerMismatchCode": -32600,
+    "legacyInitializeAnswered": true,
+    "legacyNegotiatedVersion": "2025-11-25"
+   },
+   "failures": [
+    "MUST server/discover (major-3)",
+    "MUST answer cold tools/list without handshake (major-2)",
+    "MUST NOT issue Mcp-Session-Id (major-1)",
+    "MUST return -32022 UnsupportedProtocolVersion (minor-12)",
+    "MUST return -32020 HeaderMismatch (minor-4/12)"
+   ],
+   "verdict": "legacy-stateful",
+   "claims2026": false
   },
   {
    "name": "io.github.lvsmanhole/clearscreen",
@@ -118146,12 +118255,14 @@
   },
   {
    "name": "io.github.ONLYOFFICE/docspace",
-   "url": "https://mcp.onlyoffice.com/sse",
-   "transport": "sse",
-   "checks": {},
+   "url": "https://mcp.onlyoffice.com/mcp",
+   "transport": "streamable-http",
+   "checks": {
+    "oauthChallenge": true
+   },
    "failures": [],
-   "verdict": "transport-deprecated",
-   "detail": "declares deprecated HTTP+SSE transport; not probed as Streamable HTTP"
+   "verdict": "auth-required",
+   "detail": "HTTP 401"
   },
   {
    "name": "io.github.omarkeshk/council-ai",
@@ -167957,12 +168068,26 @@
   },
   {
    "name": "io.github.Severin2k/blumen-komander-mcp",
-   "url": "https://mcp.blumen-verschicken.online/sse",
-   "transport": "sse",
-   "checks": {},
-   "failures": [],
-   "verdict": "transport-deprecated",
-   "detail": "declares deprecated HTTP+SSE transport; not probed as Streamable HTTP"
+   "url": "https://mcp.blumen-verschicken.online/mcp",
+   "transport": "streamable-http",
+   "checks": {
+    "serverDiscover": false,
+    "coldToolsList": false,
+    "coldStatus": 400,
+    "issuesSessionId": false,
+    "badVersionCode": -32000,
+    "headerMismatchCode": -32000,
+    "legacyInitializeAnswered": true,
+    "legacyNegotiatedVersion": "2025-11-25"
+   },
+   "failures": [
+    "MUST server/discover (major-3)",
+    "MUST answer cold tools/list without handshake (major-2)",
+    "MUST return -32022 UnsupportedProtocolVersion (minor-12)",
+    "MUST return -32020 HeaderMismatch (minor-4/12)"
+   ],
+   "verdict": "legacy-stateful",
+   "claims2026": false
   },
   {
    "name": "io.github.selflabbs/weather-intel-mcp",
@@ -178558,12 +178683,14 @@
   },
   {
    "name": "io.github.viaonboard/onboard",
-   "url": "https://rest.onboard.io/mcp/sse",
-   "transport": "sse",
-   "checks": {},
+   "url": "https://rest.onboard.io/mcp/rpc",
+   "transport": "streamable-http",
+   "checks": {
+    "oauthChallenge": true
+   },
    "failures": [],
-   "verdict": "transport-deprecated",
-   "detail": "declares deprecated HTTP+SSE transport; not probed as Streamable HTTP"
+   "verdict": "auth-required",
+   "detail": "HTTP 401"
   },
   {
    "name": "io.github.varvararatta/education_mcp",
@@ -179344,12 +179471,26 @@
   },
   {
    "name": "io.github.waddou/mcp-noticiel",
-   "url": "https://noticiel-mcp.wadie.workers.dev/sse",
-   "transport": "sse",
-   "checks": {},
-   "failures": [],
-   "verdict": "transport-deprecated",
-   "detail": "declares deprecated HTTP+SSE transport; not probed as Streamable HTTP"
+   "url": "https://noticiel-mcp.wadie.workers.dev/mcp",
+   "transport": "streamable-http",
+   "checks": {
+    "serverDiscover": false,
+    "coldToolsList": false,
+    "coldStatus": 400,
+    "issuesSessionId": false,
+    "badVersionCode": -32000,
+    "headerMismatchCode": -32000,
+    "legacyInitializeAnswered": true,
+    "legacyNegotiatedVersion": "2025-11-25"
+   },
+   "failures": [
+    "MUST server/discover (major-3)",
+    "MUST answer cold tools/list without handshake (major-2)",
+    "MUST return -32022 UnsupportedProtocolVersion (minor-12)",
+    "MUST return -32020 HeaderMismatch (minor-4/12)"
+   ],
+   "verdict": "legacy-stateful",
+   "claims2026": false
   },
   {
    "name": "io.github.varvararatta/open_food_facts_mcp",
@@ -182943,12 +183084,12 @@
   },
   {
    "name": "io.globalping/mcp",
-   "url": "https://mcp.globalping.io/sse",
-   "transport": "sse",
+   "url": "https://mcp.globalping.io/mcp",
+   "transport": "streamable-http",
    "checks": {},
    "failures": [],
-   "verdict": "transport-deprecated",
-   "detail": "declares deprecated HTTP+SSE transport; not probed as Streamable HTTP"
+   "verdict": "unreachable",
+   "detail": "fetch failed"
   },
   {
    "name": "io.github.Wolfe-Jam/claude-faf-mcp",
@@ -184383,12 +184524,14 @@
   },
   {
    "name": "io.prisma/mcp",
-   "url": "https://mcp.prisma.io/sse",
-   "transport": "sse",
-   "checks": {},
+   "url": "https://mcp.prisma.io/mcp",
+   "transport": "streamable-http",
+   "checks": {
+    "oauthChallenge": true
+   },
    "failures": [],
-   "verdict": "transport-deprecated",
-   "detail": "declares deprecated HTTP+SSE transport; not probed as Streamable HTTP"
+   "verdict": "auth-required",
+   "detail": "HTTP 401"
   },
   {
    "name": "io.maindex/smart",
@@ -192677,11 +192820,13 @@
   {
    "name": "net.singular/mcp-server",
    "url": "https://mcp.singular.net/mcp-server/mcp",
-   "transport": "sse",
-   "checks": {},
+   "transport": "streamable-http",
+   "checks": {
+    "oauthChallenge": true
+   },
    "failures": [],
-   "verdict": "transport-deprecated",
-   "detail": "declares deprecated HTTP+SSE transport; not probed as Streamable HTTP"
+   "verdict": "auth-required",
+   "detail": "HTTP 401"
   },
   {
    "name": "market.waxed/mcp",
@@ -195902,12 +196047,35 @@
   },
   {
    "name": "org.toolapi/hub",
-   "url": "https://toolapi.org/sse",
-   "transport": "sse",
-   "checks": {},
-   "failures": [],
-   "verdict": "transport-deprecated",
-   "detail": "declares deprecated HTTP+SSE transport; not probed as Streamable HTTP"
+   "url": "https://toolapi.org/mcp",
+   "transport": "streamable-http",
+   "checks": {
+    "serverDiscover": false,
+    "coldToolsList": true,
+    "coldStatus": 200,
+    "issuesSessionId": false,
+    "resultType": null,
+    "ttlMs": null,
+    "cacheScope": null,
+    "serverInfoInMeta": false,
+    "badVersionCode": null,
+    "headerMismatchCode": null,
+    "independentRequests": true,
+    "deterministicOrder": true,
+    "legacyInitializeAnswered": true,
+    "legacyNegotiatedVersion": "2024-11-05"
+   },
+   "failures": [
+    "MUST server/discover (major-3)",
+    "MUST set resultType (major-8)",
+    "MUST return ttlMs + cacheScope on tools/list (minor-5)",
+    "SHOULD echo serverInfo in result _meta (major-2)",
+    "MUST return -32022 UnsupportedProtocolVersion (minor-12)",
+    "MUST return -32020 HeaderMismatch (minor-4/12)"
+   ],
+   "toolCount": 193,
+   "verdict": "stateless-ish-legacy",
+   "claims2026": false
   },
   {
    "name": "org.proxykey/proxykey",

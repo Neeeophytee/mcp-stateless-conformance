@@ -11,7 +11,7 @@ let before = [];
 try {
   before = JSON.parse(execSync(`git show origin/${base}:servers.json`, { encoding: "utf8" }));
 } catch {
-  // servers.json is new in this PR — everything in it counts as changed.
+  // servers.json is new in this PR, everything in it counts as changed.
 }
 
 const seen = new Set(before.map((s) => `${s.name}|${s.url}`));

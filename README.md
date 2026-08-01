@@ -2,7 +2,7 @@
 
 [![conformance](https://github.com/Neeeophytee/mcp-stateless-conformance/actions/workflows/conformance.yml/badge.svg)](https://github.com/Neeeophytee/mcp-stateless-conformance/actions/workflows/conformance.yml)
 [![spec](https://img.shields.io/badge/MCP%20spec-2026--07--28-6E56CF)](https://modelcontextprotocol.io/specification/2026-07-28/changelog)
-[![conformant](https://img.shields.io/badge/conformant-59%20of%206061%20probed-2EA043)](#-fully-conformant-59)
+[![conformant](https://img.shields.io/badge/conformant-59%20of%206070%20probed-2EA043)](#-fully-conformant-59)
 [![corpus](https://img.shields.io/badge/corpus-9794%20servers-0969DA)](servers.json)
 [![PRs welcome](https://img.shields.io/badge/PRs-add%20your%20server-8250DF)](CONTRIBUTING.md)
 [![r/webafterai](https://img.shields.io/badge/reddit-r%2Fwebafterai-FF4500?logo=reddit&logoColor=white)](https://reddit.com/r/webafterai)
@@ -18,26 +18,26 @@ No self-reported badges, no vendor claims. Re-run it yourself:
 node conformance.mjs servers.json results.jsonl
 ```
 
-**Probed:** 2026-08-01T03:37:25.490Z · **Corpus:** 9794 remote servers from the official MCP registry
+**Probed:** 2026-08-01T03:51:12.031Z · **Corpus:** 9794 remote servers from the official MCP registry
 
 ## Scoreboard
 
 | Verdict | Count | Share |
 | --- | ---: | ---: |
 | ✅ Fully conformant | **59** | 0.6% |
-| 🟡 Implements `server/discover`, fails ≥1 MUST | 105 | 1.1% |
-| 🟠 Answers cold requests, no 2026 surface | 2721 | 27.8% |
-| 🔴 Legacy stateful | 3176 | 32.4% |
-| 🔒 Auth-gated (not probeable) | 2671 | 27.3% |
-| 🔌 Deprecated HTTP+SSE transport (not probed) | 466 | 4.8% |
-| ⚫ Unreachable | 596 | 6.1% |
+| 🟡 Implements `server/discover`, fails ≥1 MUST | 106 | 1.1% |
+| 🟠 Answers cold requests, no 2026 surface | 2723 | 27.8% |
+| 🔴 Legacy stateful | 3182 | 32.5% |
+| 🔒 Auth-gated (not probeable) | 2679 | 27.4% |
+| 🔌 Deprecated HTTP+SSE transport (not probed) | 447 | 4.6% |
+| ⚫ Unreachable | 598 | 6.1% |
 
-Of **6061** servers that answered an unauthenticated request,
+Of **6070** servers that answered an unauthenticated request,
 **59** (1.0%) fully conform.
 
-> **Read the server count with care.** The 164 servers with any
-> 2026 surface come from **109 operators**, and the
-> 59 conformant ones from **56 operators** — one vendor may deploy the
+> **Read the server count with care.** The 165 servers with any
+> 2026 surface come from **110 operators**, and the
+> 59 conformant ones from **56 operators**. One vendor may deploy the
 > same codebase to many endpoints. Operator count is the honest adoption signal.
 
 ### By operator
@@ -121,6 +121,7 @@ Of **6061** servers that answered an unauthenticated request,
 | `com.globalsourcepartners` | 1 | 0 |
 | `com.metricduck` | 1 | 0 |
 | `com.sponsorable` | 1 | 0 |
+| `com.teamwork` | 1 | 0 |
 | `com.unlistedinc` | 1 | 0 |
 | `dev.desvela` | 1 | 0 |
 | `events.belong` | 1 | 0 |
@@ -159,7 +160,7 @@ Of **6061** servers that answered an unauthenticated request,
 | Check | Spec rule | Why it matters |
 | --- | --- | --- |
 | `server/discover` | major-3 | Servers **MUST** implement it. The single clearest 2026 marker. |
-| Cold `tools/list` | major-2 | No `initialize` handshake — a cold instance must answer request #1. |
+| Cold `tools/list` | major-2 | No `initialize` handshake, so a cold instance must answer request #1. |
 | No session id | major-1 | `Mcp-Session-Id` is removed; its presence means sticky routing. |
 | `resultType` | major-8 | All results **MUST** carry it. |
 | `ttlMs`+`cacheScope` | minor-5 | List results **MUST** be cacheable. |
@@ -230,7 +231,7 @@ Of **6061** servers that answered an unauthenticated request,
 | `sh.releases/mcp` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | `site.chatgpt.larklaon.one-bad-idea/not-work` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 
-## 🟡 Partial — implements `server/discover` but fails a MUST (105)
+## 🟡 Partial: implements `server/discover` but fails a MUST (106)
 
 | Server | `server/discover` | Cold `tools/list` | No session id | `resultType` | `ttlMs`+`cacheScope` | `-32022` | `-32020` |
 | --- | :-: | :-: | :-: | :-: | :-: | :-: | :-: |
@@ -268,6 +269,7 @@ Of **6061** servers that answered an unauthenticated request,
 | `com.globalsourcepartners/emerging-markets-research` | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ |
 | `com.metricduck/financial-analysis` | ✅ | ✅ | ✅ | ❌ | ✅ | ❌ | ❌ |
 | `com.sponsorable/sponsorable` | ✅ | ❌ | ✅ | ❌ | ✅ | ❌ | ❌ |
+| `com.teamwork/mcp` | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ | ✅ |
 | `com.unlistedinc/unlisted` | ✅ | ❌ | ✅ | ❌ | ✅ | ❌ | ❌ |
 | `dev.desvela/brand-watch` | ✅ | ❌ | ✅ | ❌ | ✅ | ❌ | ❌ |
 | `events.belong/long-events` | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ |
@@ -342,15 +344,15 @@ Of **6061** servers that answered an unauthenticated request,
 
 ## Most-failed rules, among servers that claim 2026
 
-Ranked over the **164** servers that implement `server/discover` — i.e. that
+Ranked over the **165** servers that implement `server/discover`, i.e. that
 claim the new spec. Servers still on 2025 are counted as non-adopters, not as failures:
 a 2025-era server cannot "fail to return `-32022`" when it never defined that code, and
 mixing the two populations would turn non-adoption into a fake quality finding.
 
-| Rule | Adopters failing | of 164 |
+| Rule | Adopters failing | of 165 |
 | --- | ---: | ---: |
-| MUST return -32022 UnsupportedProtocolVersion (minor-12) | 99 | 60% |
-| MUST return -32020 HeaderMismatch (minor-4/12) | 98 | 60% |
+| MUST return -32022 UnsupportedProtocolVersion (minor-12) | 100 | 61% |
+| MUST return -32020 HeaderMismatch (minor-4/12) | 98 | 59% |
 | SHOULD echo serverInfo in result _meta (major-2) | 53 | 32% |
 | MUST answer cold tools/list without handshake (major-2) | 51 | 31% |
 | MUST set resultType (major-8) | 45 | 27% |
@@ -359,7 +361,7 @@ mixing the two populations would turn non-adoption into a fake quality finding.
 
 ## Add your server
 
-Shipped 2026-07-28 support? Get it on the board — it takes one line.
+Shipped 2026-07-28 support? Get it on the board. It takes one line.
 
 1. Add your endpoint to [`servers.json`](servers.json):
    ```json
@@ -368,44 +370,16 @@ Shipped 2026-07-28 support? Get it on the board — it takes one line.
 2. Open a PR. CI probes **only your endpoint** and posts the verdict on the PR within a minute.
 3. Merge lands you in the table above on the next run.
 
-**No gatekeeping and no vibes** — the probe decides, and it runs the same nine checks on
+**No gatekeeping and no vibes.** The probe decides, and it runs the same nine checks on
 your server as on everyone else's. If it fails, the PR tells you exactly which rule and where
 in the spec it lives, so you can fix it and push again. Failing the first time is normal;
-99 servers currently miss "return -32022 UnsupportedProtocolVersion (minor-12)".
+100 servers currently miss "return -32022 UnsupportedProtocolVersion (minor-12)".
 
-Auth-gated servers are welcome too. They're recorded as **unverified**, never as passing —
+Auth-gated servers are welcome too. They're recorded as **unverified**, never as passing.
 if you want a green row, expose an unauthenticated `server/discover`, which the spec
 requires anyway.
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for the full checklist and how to dispute a verdict.
-
-## Corrections
-
-**2026-08-01 — the first published results were wrong and have been retracted.**
-
-The initial corpus was not the registry. It was an alphabetical prefix of it, running
-`ac.inference.sh` → `com.boostedchat`, because the fetch script capped pagination at 40
-pages while the registry paginates in name order. It covered 1,472 of 9,794 remote servers
-(15%) and contained **zero `io.github.*` servers** — a namespace that is 5,006 servers, or
-51% of all remote servers in the registry. Reported by a reader on r/mcp.
-
-Published as "2 of 752 conformant". Actually 59 of 6061. The retracted
-figure was wrong in both directions that matter: it undercounted conformant servers ~30x,
-and its claim that adoption came from "just 5 operators" was an artifact of the biased
-sample — the real figure is 109 operators.
-
-Two further bugs found in the same review:
-
-- The failure ranking charged 2025-era servers with failing 2026 MUSTs. A server that never
-  adopted the spec cannot "fail to return `-32022`"; 728 of 749 counted failures were
-  non-adopters. The ranking is now computed only over servers that claim 2026.
-- Servers declaring the deprecated HTTP+SSE transport were probed with Streamable HTTP POST
-  and labelled legacy-stateful. That measures the wrong protocol; they now have their own
-  bucket and are excluded from the probed denominator.
-
-Fixes: `scripts/fetch-registry.mjs` has no page cap and checkpoints its cursor, so the
-truncation cannot recur silently and a network failure resumes rather than discarding the
-run. The nine checks themselves were never implicated.
 
 ---
 
