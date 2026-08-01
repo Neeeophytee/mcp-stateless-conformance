@@ -53,6 +53,22 @@ console.log(`# MCP 2026-07-28 Stateless Conformance
 [![r/webafterai](${badge("reddit", "r/webafterai", "FF4500", "?logo=reddit&logoColor=white")})](https://reddit.com/r/webafterai)
 [![newsletter](${badge("newsletter", "subscribe", "FF6719", "?logo=substack&logoColor=white")})](https://webafterai.substack.com/)
 
+> ## ⚠️ These results are not valid — do not cite them
+>
+> The corpus below is **not** the MCP registry. It is an alphabetical prefix of it,
+> running from \`ac.inference.sh\` to \`com.boostedchat\` and stopping there, because the
+> script that built it capped pagination at 40 pages while the registry paginates in
+> name order.
+>
+> It contains **zero \`io.github.*\` servers**, which are a large share of the remote
+> servers in the registry. Every count, percentage, and "most-failed rule" ranking on
+> this page is therefore measured against a biased sample, not the ecosystem.
+>
+> A corrected full-registry scan is in progress. Until it lands, treat the numbers here
+> as void. The per-server verdicts for endpoints that *were* probed remain individually
+> accurate — the checks themselves were not the problem — but no aggregate on this page
+> should be quoted.
+
 Machine-checked conformance of public MCP servers against the
 [2026-07-28 specification](https://modelcontextprotocol.io/specification/2026-07-28/changelog).
 
