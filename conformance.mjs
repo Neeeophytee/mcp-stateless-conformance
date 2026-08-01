@@ -76,7 +76,21 @@ const result  = (r) => (r?.status === 200 ? r?.body?.result ?? null : null);
 async function probe(srv) {
   const out = { name: srv.name, url: srv.url, transport: srv.type, checks: {}, failures: [] };
   const C = out.checks;
+
+  // Only hold a server to a 2026 MUST once it has claimed 2026 by implementing
+  // server/discover. Charging a 2025-era server with "did not return -32022" is
+  // tautological: it cannot fail to renumber an error code it never defined.
+  // Failures are recorded either way; `appliesTo` decides what gets aggregated.
   const fail = (rule) => out.failures.push(rule);
+
+  // The registry's `sse` type is the deprecated HTTP+SSE transport. Probing it
+  // with Streamable HTTP POST measures the wrong protocol, so it gets its own
+  // bucket instead of a meaningless "legacy-stateful" verdict.
+  if (srv.type === "sse") {
+    out.verdict = "transport-deprecated";
+    out.detail = "declares deprecated HTTP+SSE transport; not probed as Streamable HTTP";
+    return out;
+  }
 
   // --- server/discover: the definitive 2026 marker. MUST be implemented. ----
   const disc = await call(srv.url, "server/discover");
@@ -160,6 +174,10 @@ async function probe(srv) {
   else if (C.serverDiscover) out.verdict = "partial-2026";
   else if (C.coldToolsList) out.verdict = "stateless-ish-legacy";
   else out.verdict = "legacy-stateful";
+
+  // A server that never claimed 2026 is a non-adopter, not a broken implementer.
+  // Reports must not blend the two populations into one failure ranking.
+  out.claims2026 = !!C.serverDiscover;
   return out;
 }
 

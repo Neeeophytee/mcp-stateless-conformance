@@ -28,9 +28,13 @@ const rows = (list) =>
 const HEAD = `| Server | \`server/discover\` | Cold \`tools/list\` | No session id | \`resultType\` | \`ttlMs\`+\`cacheScope\` | \`-32022\` | \`-32020\` |
 | --- | :-: | :-: | :-: | :-: | :-: | :-: | :-: |`;
 
-// Which MUST trips implementers up most — the actually useful signal for maintainers.
+// Which MUST trips implementers up most. Ranked ONLY over servers that claimed
+// 2026 by implementing server/discover: counting a 2025-era server as "failed to
+// return -32022" is tautological — it never defined that code — and blending the
+// two populations turns non-adoption into a fake implementation-quality finding.
+const adopters = R.filter((r) => r.claims2026 ?? (r.checks && r.checks.serverDiscover));
 const tally = {};
-for (const r of R) for (const f of r.failures || []) tally[f] = (tally[f] || 0) + 1;
+for (const r of adopters) for (const f of r.failures || []) tally[f] = (tally[f] || 0) + 1;
 const ranked = Object.entries(tally).sort((a, b) => b[1] - a[1]);
 
 // Badges live here, not in README.md, because CI regenerates the README on every
@@ -139,11 +143,16 @@ ${conformant.length ? HEAD + "\n" + rows(conformant) : "_None yet._"}
 
 ${partial.length ? HEAD + "\n" + rows(partial) : "_None._"}
 
-## Most-failed rules
+## Most-failed rules, among servers that claim 2026
 
-| Rule | Servers failing |
-| --- | ---: |
-${ranked.map(([k, v]) => `| ${k} | ${v} |`).join("\n")}
+Ranked over the **${adopters.length}** servers that implement \`server/discover\` — i.e. that
+claim the new spec. Servers still on 2025 are counted as non-adopters, not as failures:
+a 2025-era server cannot "fail to return \`-32022\`" when it never defined that code, and
+mixing the two populations would turn non-adoption into a fake quality finding.
+
+| Rule | Adopters failing | of ${adopters.length} |
+| --- | ---: | ---: |
+${ranked.length ? ranked.map(([k, v]) => `| ${k} | ${v} | ${((v / adopters.length) * 100).toFixed(0)}% |`).join("\n") : "| _no adopters in corpus_ | — | — |"}
 
 ## Add your server
 
