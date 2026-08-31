@@ -2,7 +2,7 @@
 
 [![conformance](https://github.com/Neeeophytee/mcp-stateless-conformance/actions/workflows/conformance.yml/badge.svg)](https://github.com/Neeeophytee/mcp-stateless-conformance/actions/workflows/conformance.yml)
 [![spec](https://img.shields.io/badge/MCP%20spec-2026--07--28-6E56CF)](https://modelcontextprotocol.io/specification/2026-07-28/changelog)
-[![conformant](https://img.shields.io/badge/conformant-151%20of%206005%20probed-2EA043)](#-fully-conformant-151)
+[![conformant](https://img.shields.io/badge/conformant-209%20of%205989%20probed-2EA043)](#-fully-conformant-209)
 [![corpus](https://img.shields.io/badge/corpus-9794%20servers-0969DA)](servers.json)
 [![PRs welcome](https://img.shields.io/badge/PRs-add%20your%20server-8250DF)](CONTRIBUTING.md)
 [![r/webafterai](https://img.shields.io/badge/reddit-r%2Fwebafterai-FF4500?logo=reddit&logoColor=white)](https://reddit.com/r/webafterai)
@@ -18,52 +18,58 @@ No self-reported badges, no vendor claims. Re-run it yourself:
 node conformance.mjs servers.json results.jsonl
 ```
 
-**Probed:** 2026-08-24T06:53:17.391Z · **Corpus:** 9794 remote servers from the official MCP registry
+**Probed:** 2026-08-31T12:33:13.080Z · **Corpus:** 9794 remote servers from the official MCP registry
 
 ## Scoreboard
 
 | Verdict | Count | Share |
 | --- | ---: | ---: |
-| ✅ Fully conformant | **151** | 1.5% |
-| 🟡 Implements `server/discover`, fails ≥1 MUST | 131 | 1.3% |
-| 🟠 Answers cold requests, no 2026 surface | 2659 | 27.1% |
-| 🔴 Legacy stateful | 3064 | 31.3% |
-| 🔒 Auth-gated (not probeable) | 2612 | 26.7% |
+| ✅ Fully conformant | **209** | 2.1% |
+| 🟡 Implements `server/discover`, fails ≥1 MUST | 138 | 1.4% |
+| 🟠 Answers cold requests, no 2026 surface | 2612 | 26.7% |
+| 🔴 Legacy stateful | 3030 | 30.9% |
+| 🔒 Auth-gated (not probeable) | 2596 | 26.5% |
 | 🔌 Deprecated HTTP+SSE transport (not probed) | 447 | 4.6% |
-| ⚫ Unreachable | 730 | 7.5% |
+| ⚫ Unreachable | 762 | 7.8% |
 
-Of **6005** servers that answered an unauthenticated request,
-**151** (2.5%) fully conform.
+Of **5989** servers that answered an unauthenticated request,
+**209** (3.5%) fully conform.
 
-> **Read the server count with care.** The 282 servers with any
-> 2026 surface come from **191 operators**, and the
-> 151 conformant ones from **117 operators**. One vendor may deploy the
+> **Read the server count with care.** The 347 servers with any
+> 2026 surface come from **210 operators**, and the
+> 209 conformant ones from **130 operators**. One vendor may deploy the
 > same codebase to many endpoints. Operator count is the honest adoption signal.
 
 ### By operator
 
 | Operator | Servers with 2026 surface | Fully conformant |
 | --- | ---: | ---: |
-| `io.github.cyanheads` | 29 | 29 |
+| `io.github.cyanheads` | 72 | 72 |
 | `com.jithox` | 3 | 3 |
+| `io.github.SidneyBissoli` | 3 | 3 |
 | `io.github.stillmarcus24` | 3 | 3 |
 | `io.github.adewale` | 2 | 2 |
-| `io.github.SidneyBissoli` | 2 | 2 |
+| `io.github.vybenetwork` | 2 | 2 |
 | `io.github.beepboop2025` | 2 | 1 |
+| `ai.analyticslegends` | 1 | 1 |
 | `ac.inference.sh` | 1 | 1 |
-| `ai.childadhd` | 1 | 1 |
 | `ai.childpsychiatry` | 1 | 1 |
 | `ai.childanxiety` | 1 | 1 |
+| `ai.childadhd` | 1 | 1 |
 | `ai.dsght` | 1 | 1 |
 | `ai.jobero` | 1 | 1 |
+| `ai.nexez` | 1 | 1 |
+| `ai.robomart` | 1 | 1 |
 | `ai.muffed` | 1 | 1 |
+| `ai.popdot` | 1 | 1 |
 | `ai.pubfi` | 1 | 1 |
-| `ai.teenanxiety` | 1 | 1 |
-| `ai.teenpsychiatry` | 1 | 1 |
 | `ai.teenadhd` | 1 | 1 |
+| `ai.teenpsychiatry` | 1 | 1 |
+| `ai.teenanxiety` | 1 | 1 |
 | `ai.teentherapy` | 1 | 1 |
 | `ai.workingmemory` | 1 | 1 |
 | `app.noemic` | 1 | 1 |
+| `app.himalayas` | 1 | 1 |
 | `app.racecalendar` | 1 | 1 |
 | `app.saber.mcp` | 1 | 1 |
 | `app.onehaus` | 1 | 1 |
@@ -71,8 +77,8 @@ Of **6005** servers that answered an unauthenticated request,
 | `blog.tenjin` | 1 | 1 |
 | `au.com.cameronwilson.camfeed` | 1 | 1 |
 | `build.exascale` | 1 | 1 |
-| `cat.2022` | 1 | 1 |
 | `build.naru` | 1 | 1 |
+| `cat.2022` | 1 | 1 |
 | `co.tempguru` | 1 | 1 |
 | `com.a2a2p` | 1 | 1 |
 | `com.apple-rag` | 1 | 1 |
@@ -80,9 +86,8 @@ Of **6005** servers that answered an unauthenticated request,
 | `com.cloudflare.mcp` | 1 | 1 |
 | `com.contrastcyber` | 1 | 1 |
 | `com.emorahealth` | 1 | 1 |
-| `com.epovest` | 1 | 1 |
 | `com.feranor` | 1 | 1 |
-| `com.geezerkeeper` | 1 | 1 |
+| `com.epovest` | 1 | 1 |
 | `com.gleanmark` | 1 | 1 |
 | `com.holdingsintel` | 1 | 1 |
 | `com.kitsdeals` | 1 | 1 |
@@ -92,17 +97,21 @@ Of **6005** servers that answered an unauthenticated request,
 | `com.ntop` | 1 | 1 |
 | `com.obriym-crm` | 1 | 1 |
 | `com.politicalcomms` | 1 | 1 |
-| `com.predictionmarketspicks` | 1 | 1 |
 | `com.psychiatryforkids` | 1 | 1 |
+| `com.predictionmarketspicks` | 1 | 1 |
 | `com.quantum-expectations` | 1 | 1 |
 | `com.rigorloop` | 1 | 1 |
+| `com.smklog` | 1 | 1 |
 | `com.songstoyoureyes` | 1 | 1 |
 | `com.somosvelora` | 1 | 1 |
+| `com.spacexploration` | 1 | 1 |
 | `com.teenpsychiatry` | 1 | 1 |
-| `com.tipranks` | 1 | 1 |
+| `com.thequietprotocol.www` | 1 | 1 |
 | `com.tulimoa` | 1 | 1 |
+| `com.tipranks` | 1 | 1 |
 | `com.wikitolica` | 1 | 1 |
 | `com.zyberno` | 1 | 1 |
+| `de.agentview` | 1 | 1 |
 | `dev.e18e` | 1 | 1 |
 | `dev.busymate` | 1 | 1 |
 | `dev.svelte` | 1 | 1 |
@@ -115,48 +124,52 @@ Of **6005** servers that answered an unauthenticated request,
 | `io.blockchainanalysis` | 1 | 1 |
 | `io.gamefork` | 1 | 1 |
 | `io.github.addychang` | 1 | 1 |
-| `io.github.africanmarketos591` | 1 | 1 |
 | `io.github.antoinedelorme` | 1 | 1 |
 | `io.github.asokore` | 1 | 1 |
-| `io.github.ariffazil` | 1 | 1 |
+| `io.github.africanmarketos591` | 1 | 1 |
 | `io.github.byimprint` | 1 | 1 |
+| `io.github.clerk` | 1 | 1 |
 | `io.github.Cmoen11` | 1 | 1 |
 | `io.github.crossi-dev` | 1 | 1 |
 | `io.github.Dahliyaal` | 1 | 1 |
-| `io.github.DHEBP` | 1 | 1 |
 | `io.github.DrRataplan` | 1 | 1 |
-| `io.github.fmadore` | 1 | 1 |
 | `io.github.gautamgb` | 1 | 1 |
+| `io.github.fmadore` | 1 | 1 |
 | `io.github.HEUSAI` | 1 | 1 |
 | `io.github.imprezahost` | 1 | 1 |
+| `io.github.Iron-Mark` | 1 | 1 |
 | `io.github.KG-NINJA` | 1 | 1 |
 | `io.github.LE-VAI` | 1 | 1 |
 | `io.github.MarshallBear1` | 1 | 1 |
 | `io.github.medprice-ai` | 1 | 1 |
 | `io.github.nalegaluorg` | 1 | 1 |
 | `io.github.nu-people` | 1 | 1 |
+| `io.github.nulib` | 1 | 1 |
 | `io.github.PatrickPi1312` | 1 | 1 |
 | `io.github.privatelawattorneys` | 1 | 1 |
-| `io.github.rhein1` | 1 | 1 |
-| `io.github.re-port-flow` | 1 | 1 |
-| `io.github.rationalbloks` | 1 | 1 |
 | `io.github.rezearcher` | 1 | 1 |
+| `io.github.re-port-flow` | 1 | 1 |
+| `io.github.rhein1` | 1 | 1 |
+| `io.github.rationalbloks` | 1 | 1 |
 | `io.github.seunghan91` | 1 | 1 |
+| `io.github.social-freak-ltd` | 1 | 1 |
 | `io.github.Steven3265` | 1 | 1 |
-| `io.github.tcador` | 1 | 1 |
+| `io.github.subsquid-labs` | 1 | 1 |
+| `io.github.superagents-lab` | 1 | 1 |
 | `io.github.Tanbir404` | 1 | 1 |
+| `io.github.tcador` | 1 | 1 |
+| `io.github.thyn-ai` | 1 | 1 |
 | `io.github.tickadoo` | 1 | 1 |
-| `io.github.vassiliylakhonin` | 1 | 1 |
-| `io.github.vybenetwork` | 1 | 1 |
-| `io.github.youdotcom-oss` | 1 | 1 |
+| `io.github.troyhunt` | 1 | 1 |
 | `io.github.zemloai-ctrl` | 1 | 1 |
 | `io.github.zation` | 1 | 1 |
 | `io.mediawork` | 1 | 1 |
 | `io.seaworthy` | 1 | 1 |
 | `link.cyberelf.whetstone` | 1 | 1 |
+| `net.andrii` | 1 | 1 |
 | `org.wegtultrarich` | 1 | 1 |
-| `online.sasame` | 1 | 1 |
 | `ru.activatedai` | 1 | 1 |
+| `online.sasame` | 1 | 1 |
 | `ru.layero` | 1 | 1 |
 | `sh.releases` | 1 | 1 |
 | `site.chatgpt.larklaon.one-bad-idea` | 1 | 1 |
@@ -168,29 +181,32 @@ Of **6005** servers that answered an unauthenticated request,
 | `io.github.apifymcpfactory-droid` | 3 | 0 |
 | `io.github.Cookient16` | 3 | 0 |
 | `io.github.dizzyvinci` | 2 | 0 |
-| `ai.analyticslegends` | 1 | 0 |
+| `io.github.gateio-dev` | 2 | 0 |
 | `ai.primateintelligence` | 1 | 0 |
 | `ai.satoshidata` | 1 | 0 |
 | `ai.wubble` | 1 | 0 |
+| `app.savedthat` | 1 | 0 |
 | `app.2ools` | 1 | 0 |
 | `at.designare` | 1 | 0 |
 | `co.ainumbers` | 1 | 0 |
+| `com.ainetcafe` | 1 | 0 |
 | `com.apify` | 1 | 0 |
 | `com.am-lich` | 1 | 0 |
-| `com.ainetcafe` | 1 | 0 |
-| `com.datasignalslab` | 1 | 0 |
+| `com.changethisfile` | 1 | 0 |
 | `com.dapdip` | 1 | 0 |
+| `com.datasignalslab` | 1 | 0 |
 | `com.globalsourcepartners` | 1 | 0 |
 | `com.gribstream` | 1 | 0 |
+| `com.geezerkeeper` | 1 | 0 |
 | `com.leewaystudio` | 1 | 0 |
 | `com.metricduck` | 1 | 0 |
 | `com.saasbrowser` | 1 | 0 |
 | `com.sponsorable` | 1 | 0 |
 | `com.teamwork` | 1 | 0 |
 | `com.unlistedinc` | 1 | 0 |
-| `dev.desvela` | 1 | 0 |
 | `com.viatsy` | 1 | 0 |
 | `dev.gemot` | 1 | 0 |
+| `dev.desvela` | 1 | 0 |
 | `dev.promplate` | 1 | 0 |
 | `events.belong` | 1 | 0 |
 | `io.github.agenticempire` | 1 | 0 |
@@ -199,20 +215,22 @@ Of **6005** servers that answered an unauthenticated request,
 | `io.github.benmilne-com` | 1 | 0 |
 | `io.github.cnghockey` | 1 | 0 |
 | `io.github.fashionmascherine-svg` | 1 | 0 |
+| `io.github.fxmacrodata` | 1 | 0 |
 | `io.github.gbude-sudo` | 1 | 0 |
 | `io.github.getambr` | 1 | 0 |
 | `io.github.hassanahashish-design` | 1 | 0 |
+| `io.github.hebcal` | 1 | 0 |
 | `io.github.jackculpan` | 1 | 0 |
-| `io.github.iQuesta` | 1 | 0 |
 | `io.github.influqa` | 1 | 0 |
+| `io.github.james-robson` | 1 | 0 |
 | `io.github.JdPG23` | 1 | 0 |
-| `io.github.kapoost` | 1 | 0 |
+| `io.github.iQuesta` | 1 | 0 |
 | `io.github.killbridge` | 1 | 0 |
+| `io.github.kapoost` | 1 | 0 |
 | `io.github.Kubedoll-Heavy-Industries` | 1 | 0 |
 | `io.github.KincaidYang` | 1 | 0 |
-| `io.github.makloai` | 1 | 0 |
-| `io.github.Nikolife2016` | 1 | 0 |
 | `io.github.oasdiff` | 1 | 0 |
+| `io.github.Nikolife2016` | 1 | 0 |
 | `io.github.peterod99` | 1 | 0 |
 | `io.github.parkragsterman` | 1 | 0 |
 | `io.github.projecttron` | 1 | 0 |
@@ -221,6 +239,7 @@ Of **6005** servers that answered an unauthenticated request,
 | `io.github.sreichsbb-stack` | 1 | 0 |
 | `io.github.Stackbilt-dev` | 1 | 0 |
 | `io.github.sunholo-data` | 1 | 0 |
+| `io.github.Timwal78` | 1 | 0 |
 | `io.github.trip2g` | 1 | 0 |
 | `io.github.veyvey45-eng` | 1 | 0 |
 | `io.github.wrbtc` | 1 | 0 |
@@ -248,23 +267,28 @@ Of **6005** servers that answered an unauthenticated request,
 | `-32022` | minor-12 | Version mismatch **MUST** use `UnsupportedProtocolVersion`. |
 | `-32020` | minor-4/12 | `Mcp-Method` header/body mismatch **MUST** be rejected. |
 
-## ✅ Fully conformant (151)
+## ✅ Fully conformant (209)
 
 | Server | `server/discover` | Cold `tools/list` | No session id | `resultType` | `ttlMs`+`cacheScope` | `-32022` | `-32020` |
 | --- | :-: | :-: | :-: | :-: | :-: | :-: | :-: |
 | `ac.inference.sh/mcp` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| `ai.analyticslegends/sap-analytics` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | `ai.childadhd/library` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | `ai.childanxiety/library` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | `ai.childpsychiatry/library` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | `ai.dsght/public` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | `ai.jobero/job-search` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | `ai.muffed/muffed` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| `ai.nexez/commerce` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| `ai.popdot/popdot-mcp` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | `ai.pubfi/mcp` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| `ai.robomart/robomart` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | `ai.teenadhd/library` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | `ai.teenanxiety/library` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | `ai.teenpsychiatry/library` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | `ai.teentherapy/library` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | `ai.workingmemory/memory` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| `app.himalayas/mcp` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | `app.noemic/noemic` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | `app.onehaus/haus` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | `app.racecalendar/f1` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
@@ -284,7 +308,6 @@ Of **6005** servers that answered an unauthenticated request,
 | `com.emorahealth/mental-health-care` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | `com.epovest/ai-visibility` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | `com.feranor/resilience` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
-| `com.geezerkeeper/referral-exit-routes` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | `com.gleanmark/trademark-search` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | `com.holdingsintel/mcp` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | `com.jithox/einvoice-readiness` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
@@ -301,13 +324,17 @@ Of **6005** servers that answered an unauthenticated request,
 | `com.psychiatryforkids/library` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | `com.quantum-expectations/quantum-expectations` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | `com.rigorloop/research-bounties` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| `com.smklog/parcel-quotes` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | `com.somosvelora/velora` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | `com.songstoyoureyes/catalog` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| `com.spacexploration/listings` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | `com.teenpsychiatry/library` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| `com.thequietprotocol.www/tqp-growth-offense` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | `com.tipranks/tipranks` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | `com.tulimoa/platform` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | `com.wikitolica/mcp` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | `com.zyberno/zyberno` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| `de.agentview/agentview-mcp` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | `dev.busymate/busymate-devtools` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | `dev.e18e/e18e` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | `dev.svelte/mcp` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
@@ -324,54 +351,98 @@ Of **6005** servers that answered an unauthenticated request,
 | `io.github.adewale/keyboardia` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | `io.github.africanmarketos591/mvr-api` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | `io.github.antoinedelorme/kweenkl-mcp` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
-| `io.github.ariffazil/arifos` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | `io.github.asokore/statcite` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | `io.github.beepboop2025/liquilens` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | `io.github.byimprint/intelligence` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| `io.github.clerk/mcp-server` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | `io.github.Cmoen11/redm-mcp` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | `io.github.crossi-dev/latam-tools` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | `io.github.cyanheads/arxiv-mcp-server` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| `io.github.cyanheads/aviation-weather-mcp-server` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | `io.github.cyanheads/bls-labor-mcp-server` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| `io.github.cyanheads/bluesky-mcp-server` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | `io.github.cyanheads/calculator-mcp-server` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | `io.github.cyanheads/cdc-health-mcp-server` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | `io.github.cyanheads/clinicaltrialsgov-mcp-server` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| `io.github.cyanheads/congressgov-mcp-server` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| `io.github.cyanheads/courtlistener-mcp-server` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| `io.github.cyanheads/cpsc-recalls-mcp-server` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | `io.github.cyanheads/cyanheads-mcp-server` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| `io.github.cyanheads/devops-status-mcp-server` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| `io.github.cyanheads/earthquake-mcp-server` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| `io.github.cyanheads/eia-energy-mcp-server` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | `io.github.cyanheads/ensembl-mcp-server` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | `io.github.cyanheads/eur-lex-mcp-server` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | `io.github.cyanheads/eurostat-mcp-server` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| `io.github.cyanheads/exchange-rates-mcp-server` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| `io.github.cyanheads/faa-aircraft-registry-mcp-server` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| `io.github.cyanheads/faostat-mcp-server` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| `io.github.cyanheads/fcc-broadband-mcp-server` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | `io.github.cyanheads/federal-regulations-mcp-server` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | `io.github.cyanheads/fema-mcp-server` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| `io.github.cyanheads/gbif-biodiversity-mcp-server` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | `io.github.cyanheads/gdelt-mcp-server` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | `io.github.cyanheads/gutenberg-mcp-server` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| `io.github.cyanheads/hn-mcp-server` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| `io.github.cyanheads/imf-mcp-server` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| `io.github.cyanheads/medical-codes-mcp-server` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | `io.github.cyanheads/met-museum-mcp-server` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | `io.github.cyanheads/musicbrainz-mcp-server` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | `io.github.cyanheads/national-parks-mcp-server` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | `io.github.cyanheads/nhtsa-vehicle-safety-mcp-server` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| `io.github.cyanheads/noaa-climate-mcp-server` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| `io.github.cyanheads/noaa-marine-mcp-server` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| `io.github.cyanheads/noaa-spaceweather-mcp-server` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| `io.github.cyanheads/nonprofit-explorer-mcp-server` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| `io.github.cyanheads/npi-providers-mcp-server` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| `io.github.cyanheads/nws-weather-mcp-server` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | `io.github.cyanheads/onebusaway-mcp-server` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | `io.github.cyanheads/open-meteo-mcp-server` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | `io.github.cyanheads/openalex-mcp-server` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| `io.github.cyanheads/openaq-mcp-server` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| `io.github.cyanheads/openchargemap-mcp-server` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| `io.github.cyanheads/openfda-mcp-server` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| `io.github.cyanheads/openfec-mcp-server` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| `io.github.cyanheads/openfoodfacts-mcp-server` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| `io.github.cyanheads/openlibrary-mcp-server` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| `io.github.cyanheads/openstates-mcp-server` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| `io.github.cyanheads/openstreetmap-mcp-server` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| `io.github.cyanheads/orcid-mcp-server` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| `io.github.cyanheads/osv-advisory-mcp-server` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| `io.github.cyanheads/ourairports-mcp-server` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | `io.github.cyanheads/pentest-mcp-server` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | `io.github.cyanheads/pokeapi-mcp-server` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| `io.github.cyanheads/protein-mcp-server` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | `io.github.cyanheads/pubchem-mcp-server` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | `io.github.cyanheads/pubmed-mcp-server` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| `io.github.cyanheads/reliefweb-mcp-server` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| `io.github.cyanheads/ris-austria-mcp-server` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| `io.github.cyanheads/sanctions-screening-mcp-server` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | `io.github.cyanheads/secedgar-mcp-server` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| `io.github.cyanheads/smithsonian-mcp-server` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | `io.github.cyanheads/socrata-mcp-server` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | `io.github.cyanheads/stackexchange-mcp-server` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| `io.github.cyanheads/treasury-fiscaldata-mcp-server` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| `io.github.cyanheads/usaspending-mcp-server` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | `io.github.cyanheads/usgs-water-mcp-server` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| `io.github.cyanheads/who-gho-mcp-server` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | `io.github.cyanheads/wikidata-mcp-server` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| `io.github.cyanheads/worldbank-mcp-server` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| `io.github.cyanheads/wsdot-mcp-server` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | `io.github.Dahliyaal/justicelibre` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
-| `io.github.DHEBP/dero-mcp-server` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | `io.github.DrRataplan/fonto-docs` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | `io.github.fmadore/iwac-mcp-server` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | `io.github.gautamgb/mcp-server-mcpindex` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | `io.github.HEUSAI/notsy-facturacion` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | `io.github.imprezahost/impreza-mcp` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| `io.github.Iron-Mark/stellaroid-earn` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | `io.github.KG-NINJA/hyperxosist-agent` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | `io.github.LE-VAI/designesy-org` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | `io.github.MarshallBear1/juno-open-health-tools` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | `io.github.medprice-ai/mcp-medprice-ai` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | `io.github.nalegaluorg/nalegalu` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | `io.github.nu-people/nue-people-jobs` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| `io.github.nulib/dc-api` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | `io.github.PatrickPi1312/eu-compliance` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | `io.github.privatelawattorneys/wiki-private-law` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | `io.github.rationalbloks/rationalbloks-mcp` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
@@ -381,21 +452,27 @@ Of **6005** servers that answered an unauthenticated request,
 | `io.github.seunghan91/ainote` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | `io.github.SidneyBissoli/ibge-br-mcp` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | `io.github.SidneyBissoli/medical-terminologies-mcp` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| `io.github.SidneyBissoli/senado-br-mcp-cloudflare` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| `io.github.social-freak-ltd/socialfetch` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | `io.github.Steven3265/homechecker-guides` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | `io.github.stillmarcus24/stillos-edge-gate` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | `io.github.stillmarcus24/stillos-kya` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | `io.github.stillmarcus24/stillos-notary-mcp` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| `io.github.subsquid-labs/portal-mcp-server` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| `io.github.superagents-lab/search1api` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | `io.github.Tanbir404/zephex` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | `io.github.tcador/787daily` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| `io.github.thyn-ai/algenta` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | `io.github.tickadoo/tickadoo-mcp` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
-| `io.github.vassiliylakhonin/profile-mcp` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| `io.github.troyhunt/hibp` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| `io.github.vybenetwork/solana-mcp-vybe` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | `io.github.vybenetwork/vybe-solana-api` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
-| `io.github.youdotcom-oss/mcp` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | `io.github.zation/agent-radar` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | `io.github.zemloai-ctrl/elecz` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | `io.mediawork/mediawork` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | `io.seaworthy/mcp` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | `link.cyberelf.whetstone/tools` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| `net.andrii/booking` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | `online.sasame/research` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | `org.wegtultrarich/mcp` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | `ru.activatedai/activated-ai` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
@@ -404,42 +481,44 @@ Of **6005** servers that answered an unauthenticated request,
 | `site.chatgpt.larklaon.one-bad-idea/not-work` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | `xyz.urbanplayground/events` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 
-## 🟡 Partial: implements `server/discover` but fails a MUST (131)
+## 🟡 Partial: implements `server/discover` but fails a MUST (138)
 
 | Server | `server/discover` | Cold `tools/list` | No session id | `resultType` | `ttlMs`+`cacheScope` | `-32022` | `-32020` |
 | --- | :-: | :-: | :-: | :-: | :-: | :-: | :-: |
-| `ai.analyticslegends/sap-analytics` | ✅ | ✅ | ✅ | ✅ | ❌ | ✅ | ✅ |
 | `ai.primateintelligence/mcp` | ✅ | ❌ | ✅ | ❌ | ✅ | ❌ | ❌ |
 | `ai.satoshidata/wallet-intelligence` | ✅ | ✅ | ✅ | ❌ | ✅ | ❌ | ❌ |
-| `ai.trendsmcp/amazon` | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ |
-| `ai.trendsmcp/app-store` | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ |
-| `ai.trendsmcp/competitor-tracking` | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ |
-| `ai.trendsmcp/content-strategy` | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ |
-| `ai.trendsmcp/crypto` | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ |
-| `ai.trendsmcp/ecommerce` | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ |
-| `ai.trendsmcp/google-trends` | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ |
-| `ai.trendsmcp/market-research` | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ |
-| `ai.trendsmcp/news-sentiment` | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ |
-| `ai.trendsmcp/news-volume` | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ |
-| `ai.trendsmcp/npm` | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ |
-| `ai.trendsmcp/reddit` | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ |
-| `ai.trendsmcp/seo` | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ |
-| `ai.trendsmcp/spotify` | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ |
-| `ai.trendsmcp/steam` | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ |
-| `ai.trendsmcp/tiktok` | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ |
-| `ai.trendsmcp/trends` | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ |
-| `ai.trendsmcp/wikipedia` | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ |
-| `ai.trendsmcp/x-twitter` | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ |
-| `ai.trendsmcp/youtube` | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ |
+| `ai.trendsmcp/amazon` | ✅ | ❌ | ✅ | ❌ | ✅ | ❌ | ❌ |
+| `ai.trendsmcp/app-store` | ✅ | ❌ | ✅ | ❌ | ✅ | ❌ | ❌ |
+| `ai.trendsmcp/competitor-tracking` | ✅ | ❌ | ✅ | ❌ | ✅ | ❌ | ❌ |
+| `ai.trendsmcp/content-strategy` | ✅ | ❌ | ✅ | ❌ | ✅ | ❌ | ❌ |
+| `ai.trendsmcp/crypto` | ✅ | ❌ | ✅ | ❌ | ✅ | ❌ | ❌ |
+| `ai.trendsmcp/ecommerce` | ✅ | ❌ | ✅ | ❌ | ✅ | ❌ | ❌ |
+| `ai.trendsmcp/google-trends` | ✅ | ❌ | ✅ | ❌ | ✅ | ❌ | ❌ |
+| `ai.trendsmcp/market-research` | ✅ | ❌ | ✅ | ❌ | ✅ | ❌ | ❌ |
+| `ai.trendsmcp/news-sentiment` | ✅ | ❌ | ✅ | ❌ | ✅ | ❌ | ❌ |
+| `ai.trendsmcp/news-volume` | ✅ | ❌ | ✅ | ❌ | ✅ | ❌ | ❌ |
+| `ai.trendsmcp/npm` | ✅ | ❌ | ✅ | ❌ | ✅ | ❌ | ❌ |
+| `ai.trendsmcp/reddit` | ✅ | ❌ | ✅ | ❌ | ✅ | ❌ | ❌ |
+| `ai.trendsmcp/seo` | ✅ | ❌ | ✅ | ❌ | ✅ | ❌ | ❌ |
+| `ai.trendsmcp/spotify` | ✅ | ❌ | ✅ | ❌ | ✅ | ❌ | ❌ |
+| `ai.trendsmcp/steam` | ✅ | ❌ | ✅ | ❌ | ✅ | ❌ | ❌ |
+| `ai.trendsmcp/tiktok` | ✅ | ❌ | ✅ | ❌ | ✅ | ❌ | ❌ |
+| `ai.trendsmcp/trends` | ✅ | ❌ | ✅ | ❌ | ✅ | ❌ | ❌ |
+| `ai.trendsmcp/wikipedia` | ✅ | ❌ | ✅ | ❌ | ✅ | ❌ | ❌ |
+| `ai.trendsmcp/x-twitter` | ✅ | ❌ | ✅ | ❌ | ✅ | ❌ | ❌ |
+| `ai.trendsmcp/youtube` | ✅ | ❌ | ✅ | ❌ | ✅ | ❌ | ❌ |
 | `ai.wubble/audio` | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ |
 | `app.2ools/mcp` | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ | ✅ |
+| `app.savedthat/savedthat` | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ |
 | `at.designare/knowledge` | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ |
 | `co.ainumbers/tools` | ✅ | ✅ | ✅ | ✅ | ❌ | ✅ | ✅ |
-| `com.ainetcafe/ai-netcafe` | ✅ | ✅ | ✅ | ❌ | ✅ | ❌ | ❌ |
+| `com.ainetcafe/ai-netcafe` | ✅ | ✅ | ❌ | ❌ | ✅ | ❌ | ❌ |
 | `com.am-lich/vietnamese-calendar` | ✅ | ❌ | ✅ | ❌ | ✅ | ❌ | ❌ |
 | `com.apify/apify-mcp-server` | ✅ | ❌ | ✅ | ❌ | ✅ | ❌ | ❌ |
+| `com.changethisfile/mcp` | ✅ | ✅ | ✅ | ❌ | ✅ | ❌ | ❌ |
 | `com.dapdip/youtube-growth` | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ | ✅ |
 | `com.datasignalslab/datasignals-lab-mcp` | ✅ | ❌ | ✅ | ❌ | ✅ | ❌ | ❌ |
+| `com.geezerkeeper/referral-exit-routes` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | `com.globalsourcepartners/emerging-markets-research` | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ |
 | `com.gribstream/mcp` | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ | ✅ |
 | `com.leewaystudio/code-synapse` | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ | ✅ |
@@ -468,12 +547,17 @@ Of **6005** servers that answered an unauthenticated request,
 | `io.github.dizzyvinci/building-permit-aggregator` | ✅ | ❌ | ✅ | ❌ | ✅ | ❌ | ❌ |
 | `io.github.dizzyvinci/shopify-catalog-monitor` | ✅ | ❌ | ✅ | ❌ | ✅ | ❌ | ❌ |
 | `io.github.fashionmascherine-svg/document-to-json-mcp` | ✅ | ❌ | ✅ | ❌ | ✅ | ❌ | ❌ |
+| `io.github.fxmacrodata/fxmacrodata` | ✅ | ❌ | ✅ | ❌ | ✅ | ❌ | ❌ |
+| `io.github.gateio-dev/gate-info` | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ | ✅ |
+| `io.github.gateio-dev/gate-news` | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ | ✅ |
 | `io.github.gbude-sudo/dreameros-scs-gateway` | ✅ | ❌ | ✅ | ❌ | ✅ | ❌ | ❌ |
 | `io.github.getambr/ambr-mcp-server` | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ | ❌ |
 | `io.github.hassanahashish-design/agent-signals-mcp` | ✅ | ❌ | ✅ | ❌ | ✅ | ❌ | ❌ |
+| `io.github.hebcal/hebcal` | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ | ✅ |
 | `io.github.influqa/crypto-agent-mail` | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ |
 | `io.github.iQuesta/MCP-iQuesta` | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ |
 | `io.github.jackculpan/flightseatmap` | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ |
+| `io.github.james-robson/push-realm` | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ | ❌ |
 | `io.github.JdPG23/market-data-toolkit-mcp` | ✅ | ❌ | ✅ | ❌ | ✅ | ❌ | ❌ |
 | `io.github.johnisanerd/apple-maps` | ✅ | ❌ | ✅ | ❌ | ✅ | ❌ | ❌ |
 | `io.github.johnisanerd/appstore-reviews` | ✅ | ❌ | ✅ | ❌ | ✅ | ❌ | ❌ |
@@ -497,7 +581,6 @@ Of **6005** servers that answered an unauthenticated request,
 | `io.github.killbridge/startupjobs-mcp` | ✅ | ❌ | ✅ | ❌ | ✅ | ❌ | ❌ |
 | `io.github.KincaidYang/whois` | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ | ✅ |
 | `io.github.Kubedoll-Heavy-Industries/helm-mcp` | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ | ✅ |
-| `io.github.makloai/mcp-server-dashform` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | `io.github.mikerawsonnz/auth-token-service` | ✅ | ✅ | ✅ | ❌ | ✅ | ❌ | ❌ |
 | `io.github.mikerawsonnz/authenticated-llm-agent` | ✅ | ✅ | ✅ | ❌ | ✅ | ❌ | ❌ |
 | `io.github.mikerawsonnz/authenticated-mcp-agent` | ✅ | ✅ | ✅ | ❌ | ✅ | ❌ | ❌ |
@@ -525,6 +608,7 @@ Of **6005** servers that answered an unauthenticated request,
 | `io.github.sreichsbb-stack/reich-tools` | ✅ | ❌ | ✅ | ❌ | ✅ | ❌ | ❌ |
 | `io.github.Stackbilt-dev/img-forge` | ✅ | ❌ | ✅ | ❌ | ✅ | ❌ | ❌ |
 | `io.github.sunholo-data/parse` | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ | ✅ |
+| `io.github.Timwal78/squeezeos` | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ | ❌ |
 | `io.github.trip2g/trip2g` | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ | ✅ |
 | `io.github.veyvey45-eng/travel-monitor-launch` | ✅ | ❌ | ✅ | ❌ | ✅ | ❌ | ❌ |
 | `io.github.Whitemarmot/copyright01` | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ |
@@ -542,20 +626,20 @@ Of **6005** servers that answered an unauthenticated request,
 
 ## Most-failed rules, among servers that claim 2026
 
-Ranked over the **282** servers that implement `server/discover`, i.e. that
+Ranked over the **347** servers that implement `server/discover`, i.e. that
 claim the new spec. Servers still on 2025 are counted as non-adopters, not as failures:
 a 2025-era server cannot "fail to return `-32022`" when it never defined that code, and
 mixing the two populations would turn non-adoption into a fake quality finding.
 
-| Rule | Adopters failing | of 282 |
+| Rule | Adopters failing | of 347 |
 | --- | ---: | ---: |
-| MUST return -32022 UnsupportedProtocolVersion (minor-12) | 118 | 42% |
-| MUST return -32020 HeaderMismatch (minor-4/12) | 111 | 39% |
-| SHOULD echo serverInfo in result _meta (major-2) | 59 | 21% |
-| MUST answer cold tools/list without handshake (major-2) | 55 | 20% |
-| MUST set resultType (major-8) | 48 | 17% |
-| MUST return ttlMs + cacheScope on tools/list (minor-5) | 38 | 13% |
-| MUST NOT issue Mcp-Session-Id (major-1) | 2 | 1% |
+| MUST return -32022 UnsupportedProtocolVersion (minor-12) | 126 | 36% |
+| MUST return -32020 HeaderMismatch (minor-4/12) | 116 | 33% |
+| MUST answer cold tools/list without handshake (major-2) | 76 | 22% |
+| SHOULD echo serverInfo in result _meta (major-2) | 44 | 13% |
+| MUST set resultType (major-8) | 30 | 9% |
+| MUST return ttlMs + cacheScope on tools/list (minor-5) | 18 | 5% |
+| MUST NOT issue Mcp-Session-Id (major-1) | 3 | 1% |
 | MUST serve independent requests (major-1) | 1 | 0% |
 
 ## Add your server
@@ -572,7 +656,7 @@ Shipped 2026-07-28 support? Get it on the board. It takes one line.
 **No gatekeeping and no vibes.** The probe decides, and it runs the same nine checks on
 your server as on everyone else's. If it fails, the PR tells you exactly which rule and where
 in the spec it lives, so you can fix it and push again. Failing the first time is normal;
-118 servers currently miss "return -32022 UnsupportedProtocolVersion (minor-12)".
+126 servers currently miss "return -32022 UnsupportedProtocolVersion (minor-12)".
 
 Auth-gated servers are welcome too. They're recorded as **unverified**, never as passing.
 if you want a green row, expose an unauthenticated `server/discover`, which the spec
